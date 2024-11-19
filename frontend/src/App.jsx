@@ -8,6 +8,7 @@ import { SignUpPage } from "./pages/sign-up-page";
 import { ServiceView } from "./pages/admin/Service-view";
 import { ServiceMan } from "./pages/admin/service-man";
 import { AddServiceMan } from "./pages/admin/add-service-man";
+import { AddService } from "./pages/admin/add-service";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="service-view" element={<ServiceView />} />
           <Route path="service-man" element={<ServiceMan />} />
           <Route path="service-man/add" element={<AddServiceMan />} />
+          <Route path="service-view/add" element={<AddService />} />
         </Route>
       </Routes>
     </div>

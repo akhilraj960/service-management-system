@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AddServiceManForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ export const AddServiceManForm = () => {
     gender: "",
   });
   const [errors, setErrors] = useState({});
+
+  const navigate = useNavigate();
 
   // Handle input change
   const handleChange = (e) => {
@@ -45,10 +49,15 @@ export const AddServiceManForm = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
       console.log("Form submitted successfully", formData);
+      const response = await axios.post(
+        "http://localhost:3000/api/serviceman/create",
+        formData
+      );
+      navigate("/admin/service-man");
       alert("Form submitted successfully!");
       // Reset form
       setFormData({ name: "", email: "", phone: "", age: "", gender: "" });

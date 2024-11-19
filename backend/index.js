@@ -30,7 +30,8 @@ app.get("/api/data", async (req, res) => {
 
 app.use(cors());
 app.use("/api/auth", authRouter);
-
+app.use("/api/serviceman", require("./routes/serviceManRoute"));
+app.use("/api/serviceview", require("./routes/serviceview"));
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
