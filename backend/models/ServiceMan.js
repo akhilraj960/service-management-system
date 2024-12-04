@@ -19,6 +19,9 @@ const serviceManSchema = mongoose.Schema({
   gender: {
     type: String,
   },
+  category: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("serviceMan", serviceManSchema);

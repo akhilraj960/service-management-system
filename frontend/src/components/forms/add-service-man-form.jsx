@@ -9,6 +9,7 @@ export const AddServiceManForm = () => {
     phone: "",
     age: "",
     gender: "",
+    category: "", // Added category to state
   });
   const [errors, setErrors] = useState({});
 
@@ -43,6 +44,7 @@ export const AddServiceManForm = () => {
       newErrors.age = "Age must be a positive number.";
     }
     if (!formData.gender) newErrors.gender = "Gender is required.";
+    if (!formData.category.trim()) newErrors.category = "Category is required."; // Validation for category
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0; // Return true if no errors
@@ -60,7 +62,14 @@ export const AddServiceManForm = () => {
       navigate("/admin/service-man");
       alert("Form submitted successfully!");
       // Reset form
-      setFormData({ name: "", email: "", phone: "", age: "", gender: "" });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        age: "",
+        gender: "",
+        category: "", // Reset category
+      });
       setErrors({});
     }
   };
@@ -131,6 +140,19 @@ export const AddServiceManForm = () => {
           </select>
           {errors.gender && (
             <p className="text-red-500 text-sm">{errors.gender}</p>
+          )}
+        </div>
+        <div className="w-full flex flex-col space-y-2">
+          <label>Category</label>
+          <input
+            type="text"
+            name="category"
+            className="input input-bordered w-full"
+            value={formData.category}
+            onChange={handleChange}
+          />
+          {errors.category && (
+            <p className="text-red-500 text-sm">{errors.category}</p>
           )}
         </div>
         <button type="submit" className="btn btn-primary w-full">
